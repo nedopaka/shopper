@@ -3,7 +3,6 @@ const express = require("express");
 const app = express();
 const morgan = require("morgan");
 const routes = require("./routes");
-const config = require("./config");
 
 // Middleware to parse JSON request bodies
 app.use(express.json());
@@ -13,7 +12,6 @@ app.use(morgan("tiny"));
 
 // Mount the router
 app.use("/", routes);
-
 // Error handling middleware
 app.use((err, req, res, next) => {
   const status = err.status || 500;
@@ -28,5 +26,4 @@ app.use((err, req, res, next) => {
     }
   });
 });
-
 module.exports = app;
